@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Class</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="upload_style.css">      
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-title">Dashboard</div>
+        <div class="logout">
+            <a href="login.html" class="button">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sidebar-toggle">
+            <i class="fa fa-bars"></i>
+        </div>
+        
+
+        <div class="content">
+            <br><br>
+            <h2>Add Student</h2>
+            <form action="upload.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <label>First Name:</label>
+                <input type="text" name="first_name" required>
+            
+                <label>Last Name:</label>
+                <input type="text" name="last_name" required>
+
+                <label>Register No:</label>
+                <input type="text" name="reg_no" required>
+
+                <label>Batch:</label>
+                <select name="batch" required>
+                    <option value="">Select Batch</option>
+                    <option value="2023-2027">2023-2027</option>
+                    <option value="2022-2026">2022-2026</option>
+                    <option value="2021-2025">2021-2025</option>
+                    <option value="2020-2024">2020-2024</option>
+                </select>
+
+                
+                <label>Certification:</label>
+                <select name="certification" required>
+                    <option value="">Select Certification</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Workshop/Webinar">Workshop / Webinar</option>
+                    <option value="Hackathon">Hackathon</option>
+                    <option value="Event">Event</option>
+                    <option value="NPTEL Courses">NPTEL Courses</option>
+                    <option value="Online Courses">Online Courses</option>
+                    <option value="Offline Courses">Offline Courses</option>
+                </select>
+               
+                <label>Name of the course / Event:</label>
+                <input type="text" name="name" required>
+
+                <label>Starting Date:</label>
+                <input type="date" name="start_date" required>
+
+                <label>Ending Date:</label>
+                <input type="date" name="end_date" required>
+
+                <label>Number of Days:</label>
+                <input type="number" name="num_days" min="1" required>
+
+                <label>Organised by:</label>
+                <input type="text" name="organiser" required>
+
+                <label>Mode of course:</label>
+                <select name="mode" required>
+                    <option value="">Select Mode</option>
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+
+                <label>Course completed in the semester:</label>
+                <select name="semester" required>
+                    <option value="">Select Semester</option>
+                    <option value="1-1">1-1</option>
+                    <option value="1-2">1-2</option>
+                    <option value="2-1">2-1</option>
+                    <option value="2-2">2-2</option>
+                    <option value="3-1">3-1</option>
+                    <option value="3-2">3-2</option>
+                    <option value="4-1">4-1</option>
+                    <option value="4-2">4-2</option>
+                </select>
+                
+                <label>Have you secured any prizes or awards (if any):</label>
+                <input type="text" name="awards">
+
+                <label>Description:</label>
+                <textarea name="description"></textarea>
+               
+                <!-- Inside the form -->
+                <label>Upload Certificate:</label>
+                <input type="file" name="certificate" required><br>
+
+                <label>Uploaded:</label>
+                <input type="checkbox" name="uploaded" value="yes" required> <br><br>
+            
+                <input type="submit" value="Submit">
+
+        
+            </form>
+            <br><br><br><br><br><br><br>
+
+        </div>
+    </div>
+
+    <div class="footer" style="background-color: #333;">
+        <div>
+            <div class="circle" style="background-color: #7e7e7b;">
+                <a href="https://www.gvpcew.ac.in/">
+                    <i class="fa fa-globe"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #3b5998;">
+                <a href="https://www.facebook.com/GayatriVidyaParishad.GVPW/">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #1da1f2;">
+                <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Fgvpcew_jg">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            <div class="circle" style="background-color: #0e76a8;">
+                <a href="https://www.linkedin.com/school/gayatri-vidya-parishad-college-of-engineering-for-women-madhurawada-pin-530048-cc-jg-/?originalSubdomain=in">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+            </div>
+            
+            <div class="circle" style="background-color: #ff0000;">
+                <a href="https://www.youtube.com/watch?v=8V05pcCkg1g">
+                    <i class="fa fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+        <div align="center">
+            Made in India <br> Copyright &copy; 2024 GVPCEW
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var firstName = document.getElementsByName("first_name")[0].value;
+            if (firstName.length === 0) {
+                alert("First Name is required");
+                return false;
+            }
+
+            var lastName = document.getElementsByName("last_name")[0].value;
+            if (lastName.length === 0) {
+                alert("Last Name is required");
+                return false;
+            }
+
+            var regNo = document.getElementsByName("reg_no")[0].value;
+            if (!/^[a-zA-Z0-9]{10}$/.test(regNo)) {
+                alert("Register No must be 10 characters long and can contain both digits and alphabets");
+                return false;
+            }
+
+            var batch = document.getElementsByName("batch")[0].value;
+            if (batch === "") {
+                alert("Batch is required");
+                return false;
+            }
+
+            var certification = document.getElementsByName("certification")[0].value;
+            if (certification === "") {
+                alert("Certification is required");
+                return false;
+            }
+
+            var name = document.getElementsByName("name")[0].value;
+            if (name.length === 0) {
+                alert("Name of the course/event is required");
+                return false;
+            }
+
+            var startDate = document.getElementsByName("start_date")[0].value;
+            if (startDate.length === 0) {
+                alert("Starting Date is required");
+                return false;
+            }
+
+            var endDate = document.getElementsByName("end_date")[0].value;
+            if (endDate.length === 0) {
+                alert("Ending Date is required");
+                return false;
+            }
+
+            var numDays = document.getElementsByName("num_days")[0].value;
+            if (numDays.length === 0 || isNaN(numDays) || parseInt(numDays) < 1) {
+                alert("Number of Days must be a positive integer");
+                return false;
+            }
+
+            var organiser = document.getElementsByName("organiser")[0].value;
+            if (organiser.length === 0) {
+                alert("Organised by is required");
+                return false;
+            }
+
+            var mode = document.getElementsByName("mode")[0].value;
+            if (mode === "") {
+                alert("Mode of course is required");
+                return false;
+            }
+
+            var semester = document.getElementsByName("semester")[0].value;
+            if (semester === "") {
+                alert("Course completed in the semester is required");
+                return false;
+            }
+
+            return true; 
+        }
+        
+        document.getElementsByName("certificate")[0].addEventListener('change', function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var img = document.getElementById("uploadedImage");
+                img.style.display = "block";
+                img.src = e.target.result;
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script>
+
+</body>
+</html>
